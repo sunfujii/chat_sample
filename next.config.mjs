@@ -1,11 +1,10 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  output: "export",
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export',
   images: { unoptimized: true },
   trailingSlash: true,
-  basePath: "/chat_sample",
-  assetPrefix: "/chat_sample/",
-};
+  basePath: '/chat_sample',
+  assetPrefix: '/chat_sample/',
+}
 
-export default nextConfig;
+export default nextConfig
