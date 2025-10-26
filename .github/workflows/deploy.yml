@@ -3,7 +3,7 @@ name: Deploy Next.js static site to GitHub Pages
 on:
   push:
     branches:
-      - main  # ← mainブランチにpushしたら実行
+      - main
 
 permissions:
   contents: write
@@ -25,7 +25,13 @@ jobs:
         run: npm ci
 
       - name: Build static site
-        run: npm run build
+        run: |
+          npm run build
+          ls -la .next
+          mkdir -p out
+          cp -r .next/static out/_next || true
+          cp -r public/* out/ || true
+          cp .next/server/app/index.html out/index.html || true
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
