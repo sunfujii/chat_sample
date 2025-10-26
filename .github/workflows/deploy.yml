@@ -27,11 +27,8 @@ jobs:
       - name: Build static site
         run: |
           npm run build
-          ls -la .next
-          mkdir -p out
-          cp -r .next/static out/_next || true
-          cp -r public/* out/ || true
-          cp .next/server/app/index.html out/index.html || true
+          ls -R .next || true
+          ls -R out || true
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
